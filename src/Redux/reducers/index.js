@@ -1,4 +1,6 @@
-import { saveBook, storeBooks, changeStatus, fetchBook } from '../actions';
+import { saveBook, storeBooks, changeStatus, fetchBook, FetchBooks, StoreBooks, SaveBook } from '../actions';
+import store from '../../Redux/store';
+
 
 const defaultState = {
   books: [],
@@ -12,6 +14,17 @@ const redux = (state = defaultState, action) => {
     case 'change':
       fetch('/saveBooks', {
         method: 'POST',
+      });
+      fetch('/booksFromDatabase').then(response => response.json(response)).then((jsonResponse) => {
+        Object.keys(jsonResponse).forEach((key) => {
+          jsonResponse[key].forEach((y) => {
+            let like;
+            if ((y.like === null) || (y.like === false)) { like = 'dislike'; } else {
+              like = 'like';
+            }
+            store.dispatch(SaveBook(y.author, y.bookid, y.name, y.rating, like));
+          });
+        });
       });
       return { ...state, page: 0 };
     case changeStatus:
