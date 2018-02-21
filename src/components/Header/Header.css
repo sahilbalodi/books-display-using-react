@@ -1,0 +1,14 @@
+#header{
+  border: 1px solid black;
+  height: 100px;
+  width: 250px;
+  position: relative;
+  left:150px;
+  color: white;
+  border-radius: 0px 0px 25px 0px;
+  font-size: 30px;
+  background-color: #9F4141;
+  text-decoration: underline;
+  text-align: center;
+ vertical-align: middle;
+}
