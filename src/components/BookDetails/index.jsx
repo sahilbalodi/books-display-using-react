@@ -11,7 +11,6 @@ class BookDetails extends React.Component {
         <span>name:{this.props.name}<br /></span>
         <span>author:{this.props.author}<br /></span>
         <span>rating:{this.props.rating}<br /></span>
-        <span>id:{this.props.id}<br /></span>
         like/dislike:
         <button
           onClick={() => { this.props.change(ChangeStatus(this.props.id)); }}
